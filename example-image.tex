@@ -1,0 +1,11 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{lipsum}
+
+\begin{document}
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[inner sep=0pt,opacity=0.5] at (current page.center)
+                          {\includegraphics[width=\paperwidth]{assets/starter_background.pdf}};
+  \end{tikzpicture}
+  \lipsum
+\end{document}
