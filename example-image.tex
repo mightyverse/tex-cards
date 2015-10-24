@@ -3,23 +3,24 @@
 \usepackage{lipsum}
 \usepackage{showframe}
 
-\newcommand{\cardbg}{
-  \begin{tikzpicture}[remember picture,overlay]
-    \node {\includegraphics[width=\paperwidth]{assets/starter_background.pdf}};
-  \end{tikzpicture}
+\newcommand{\cardbg}[1]{
+\tikz{ 
+	\node[inner ysep=-1pt,inner xsep=-4pt]{\includegraphics[width=2.5in]{assets/starter_background.pdf}};
+	\node[align=center] { #1 };
+}
 }
 
 \setlength\parindent{0pt}
 
 \begin{document}
-\tikz{ \node[inner ysep=-1pt,inner xsep=-1pt]{\includegraphics[width=2.5in]{assets/starter_background.pdf}};}
-\tikz{ \node[inner ysep=-1pt,inner xsep=-1pt]{\includegraphics[width=2.5in]{assets/starter_background.pdf}};}
-\tikz{ \node[inner ysep=-1pt,inner xsep=-1pt]{\includegraphics[width=2.5in]{assets/starter_background.pdf}};}
-\tikz{ \node[inner ysep=-1pt,inner xsep=-1pt]{\includegraphics[width=2.5in]{assets/starter_background.pdf}};}
+\cardbg{ Hello. }
+\cardbg{ Good-bye. }
+\cardbg{ Bees have four wings. }
+\cardbg{ I like to eat eggs\\for breakfast. }
 
 \begin{tikzpicture}
-        \node {\includegraphics[width=2.5in]{assets/starter_background.pdf}};
-	\draw[help lines] (0,0) grid (2,3);
+	\node[inner ysep=-1pt,inner xsep=-2pt]{\includegraphics[width=2.5in]{assets/starter_background.pdf}};
+	\draw[help lines, x=0.5in, y=0.5in] (-2,-1) grid (2,1);
 \end{tikzpicture}
 
 %\cardbg
