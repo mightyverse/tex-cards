@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{tikz}
 \usepackage{lipsum}
+\usepackage{showframe}
 
 \newcommand{\cardbg}{
   \begin{tikzpicture}[remember picture,overlay]
@@ -10,10 +11,14 @@
 
 
 \begin{document}
+\tikz{ \node {\includegraphics[width=2.5in]{assets/starter_background.pdf}};}
+\tikz{ \node {\includegraphics[width=2.5in]{assets/starter_background.pdf}};}
+
 \begin{tikzpicture}
+        \node {\includegraphics[width=2.5in]{assets/starter_background.pdf}};
 	\draw[help lines] (0,0) grid (2,3);
 \end{tikzpicture}
 
-\cardbg
-\lipsum
+%\cardbg
+ % \lipsum
 \end{document}
