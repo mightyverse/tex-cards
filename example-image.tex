@@ -2,10 +2,18 @@
 \usepackage{tikz}
 \usepackage{lipsum}
 
-\begin{document}
+\newcommand{\cardbg}{
   \begin{tikzpicture}[remember picture,overlay]
-    \node[inner sep=0pt,opacity=0.5] at (current page.center)
-                          {\includegraphics[width=\paperwidth]{assets/starter_background.pdf}};
+    \node {\includegraphics[width=\paperwidth]{assets/starter_background.pdf}};
   \end{tikzpicture}
-  \lipsum
+}
+
+
+\begin{document}
+\begin{tikzpicture}
+	\draw[help lines] (0,0) grid (2,3);
+\end{tikzpicture}
+
+\cardbg
+\lipsum
 \end{document}
