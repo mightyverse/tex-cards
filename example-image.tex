@@ -4,20 +4,21 @@
 \usepackage{showframe}
 \usepackage[left=0.625in,top=0.375in]{geometry}
 
-\newcommand{\cardbg}[1]{
-\tikz{ 
+\newcommand{\card}[1]{
+  \tikz { 
 	\node[inner ysep=-1pt,inner xsep=-4pt]{\includegraphics[width=3.74in]{assets/starter_background.pdf}};
-	\node[align=center] { #1 };
-}
+	\node[draw=none,align=center,font=\large\bf] { #1  };
+  }
 }
 
 \setlength\parindent{0pt}
 
 \begin{document}
-\cardbg{ Hello. }
-\cardbg{ Good-bye. }
-\cardbg{ Bees have four wings. }
-\cardbg{ I like to eat eggs\\for breakfast. }
+
+\card{ Hello }
+\card{ Good-bye }
+\card{ Bees have four wings. }
+\card{ I like to eat eggs\\for breakfast. }
 
 %	\draw[help lines, x=0.5in, y=0.5in] (-2,-1) grid (2,1);
 
