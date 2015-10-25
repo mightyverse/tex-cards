@@ -8,22 +8,27 @@
 
 \begin{filecontents*}{test-phrases.csv}
 num, phrase
-1, Hello.
+1, I like to drink coffee in the morning.
 2, Bees have four wings.
-3, I like to eat eggs\\for breakfast.
+3, I like to eat scrambled eggs for breakfast.
 4, This is delicious.
 \end{filecontents*}
+
+% don't hyphenate
+\tolerance=1
+\hyphenpenalty=10000
+\hbadness=10000
 
 \newcommand{\card}[1]{
   \tikz { 
 	\node[inner ysep=-1pt,inner xsep=-6pt]{\includegraphics[width=3.74in]{assets/starter_background.pdf}};
-	\node[draw=none,align=center,font=\large\bf] { #1  };
+	\node[text width=2.6in, draw=none,align=center,font=\large\bf] at (0, .02in) { #1  };
 	
-	\node [fill=white] (code) at (1in,-.45in) {
+	\node [fill=white] (code) at (1.05in,-.47in) {
 		\qrcode[hyperlink,height=0.5in] {http://www.mightyverse.com};
 	};
 	\definecolor{starter_color}{cmyk}{.40,0,.70,0}
-	\node [ white, fill=starter_color, rounded corners=4pt, inner sep=4pt, font=\sffamily] (level) at  (-1.2in,-.67in){\tiny\uppercase {inicio}};
+	\node [ white, fill=starter_color, rounded corners=4pt, inner sep=4pt, font=\sffamily] (level) at  (-1.22in,-.7in){\tiny\uppercase {inicio}};
   }
 }
 
