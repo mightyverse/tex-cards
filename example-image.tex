@@ -5,13 +5,13 @@
 \usepackage[left=0.625in,top=0.375in]{geometry}
 
 % a1d077
-
+% 3.74/2 - .55
 \newcommand{\card}[1]{
   \tikz { 
 	\node[inner ysep=-1pt,inner xsep=-4pt]{\includegraphics[width=3.74in]{assets/starter_background.pdf}};
 	\node[draw=none,align=center,font=\large\bf] { #1  };
 	\definecolor{starter_color}{cmyk}{.40,0,.70,0}
-	 \node [ thick, starter_color, draw=starter_color, fill=white, rounded corners=5pt, inner sep=5pt] (level) at  (-1.25in,-1in){starter};
+	 \node [ white, fill=starter_color, rounded corners=4pt, inner sep=4pt, font=\sffamily] (level) at  (-1.2in,-.66in){\tiny\uppercase {inicio}};
   }
 }
 
