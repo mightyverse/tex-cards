@@ -1,16 +1,10 @@
 \documentclass{article}
 \usepackage[left=0.625in,top=0.375in]{geometry}
-
 \usepackage{csvsimple}
 \usepackage{tikz}
-\usetikzlibrary{positioning,fit,calc}
-
+%\usetikzlibrary{positioning,fit,calc}
 \usepackage{qrcode}
-
 %\usepackage{showframe}
-
-% a1d077
-% 3.74/2 - .55
 
 \begin{filecontents*}{test-phrases.csv}
 num, phrase
@@ -19,7 +13,6 @@ num, phrase
 3, I like to eat eggs\\for breakfast.
 4, This is delicious.
 \end{filecontents*}
-
 
 \newcommand{\card}[1]{
   \tikz { 
@@ -42,8 +35,4 @@ num, phrase
   head to column names
 ]{phrases.csv}{}{\card \phrase}
 
-%	\draw[help lines, x=0.5in, y=0.5in] (-2,-1) grid (2,1);
-
-%\cardbg
- % \lipsum
 \end{document}
