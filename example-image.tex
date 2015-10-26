@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage[left=0.625in,top=0.375in]{geometry}
+\usepackage[left=0.62in,top=0.25in,bottom=.5in]{geometry}
 \usepackage{csvsimple}
 \usepackage{tikz}
 %\usetikzlibrary{positioning,fit,calc}
@@ -11,7 +11,13 @@ num, phrase
 1, I like to drink coffee in the morning.
 2, Bees have four wings.
 3, I like to eat scrambled eggs for breakfast.
-4, This is delicious.
+4, I would like to sit down.
+5, I like to travel.
+6, I play cards.
+7, I am hungry.
+8, This is a book.
+9, The fireworks are beautiful.
+10, I walk to work every day.
 \end{filecontents*}
 
 % don't hyphenate
@@ -19,9 +25,12 @@ num, phrase
 \hyphenpenalty=10000
 \hbadness=10000
 
+\setlength{\footskip}{20pt}
+\setlength\parindent{0pt}
+
 \newcommand{\card}[1]{
   \tikz { 
-	\node[inner ysep=-1pt,inner xsep=-6pt]{\includegraphics[width=3.74in]{assets/starter_background.pdf}};
+	\node[inner ysep=-.12in,inner xsep=-.12in]{\includegraphics[width=3.74in]{assets/starter_background.pdf}};
 	\node[text width=2.6in, draw=none,align=center,font=\large\bf] at (0, .02in) { #1  };
 	
 	\node [fill=white] (code) at (1.05in,-.47in) {
@@ -32,12 +41,10 @@ num, phrase
   }
 }
 
-\setlength\parindent{0pt}
-
 \begin{document}
 
 \csvreader[
   head to column names
-]{phrases.csv}{}{\card \phrase}
+]{test-phrases.csv}{}{\card \phrase}
 
 \end{document}
