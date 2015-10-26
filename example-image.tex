@@ -1,10 +1,20 @@
 \documentclass{article}
-\usepackage[left=0.62in,top=0.25in,bottom=.5in]{geometry}
+\usepackage[left=0.75in,top=0.5in,bottom=.5in]{geometry}
 \usepackage{csvsimple}
 \usepackage{tikz}
 %\usetikzlibrary{positioning,fit,calc}
 \usepackage{qrcode}
 %\usepackage{showframe}
+
+\usepackage{background}
+
+\backgroundsetup{
+position=current page.center,
+angle=0,
+opacity=1,
+scale=1,
+contents={\includegraphics[height=\paperheight]{assets/starter_print_n_play_background.pdf}}
+}%
 
 \begin{filecontents*}{test-phrases.csv}
 num, phrase
@@ -30,14 +40,14 @@ num, phrase
 
 \newcommand{\card}[1]{
   \tikz { 
-	\node[inner ysep=-.12in,inner xsep=-.12in]{\includegraphics[width=3.74in]{assets/starter_background.pdf}};
+	\node[inner ysep=-.13in,inner xsep=-.14in]{\includegraphics[width=3.74in, height=2.24in]{assets/placeholder.pdf}};
 	\node[text width=2.6in, draw=none,align=center,font=\large\bf] at (0, .02in) { #1  };
 	
 	\node [fill=white] (code) at (1.05in,-.47in) {
 		\qrcode[hyperlink,height=0.5in] {http://www.mightyverse.com};
 	};
 	\definecolor{starter_color}{cmyk}{.40,0,.70,0}
-	\node [ white, fill=starter_color, rounded corners=4pt, inner sep=4pt, font=\sffamily] (level) at  (-1.22in,-.7in){\tiny\uppercase {inicio}};
+	\node [ white, fill=starter_color, rounded corners=4pt, inner sep=4pt, font=\sffamily] (level) at  (-1.1in,-.7in){\tiny\uppercase {starter}};
   }
 }
 
