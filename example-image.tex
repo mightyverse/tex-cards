@@ -8,17 +8,22 @@
 
 \usepackage{background}
 
+
+\newcommand{\level}{starter}
+\newcommand{\starterpath}{\level-background.pdf}
+\let\filepath\starterpath
+
 \backgroundsetup{
 position=current page.center,
 angle=0,
 opacity=1,
 scale=1,
-contents={\includegraphics[height=\paperheight]{assets/starter_print_n_play_background.pdf}}
+contents={\includegraphics[height=\paperheight]{\starterpath}}
 }%
 
 \begin{filecontents*}{test-phrases.csv}
 num, phrase
-1, I like to drink coffee in the morning.
+1, I like to drink coffee all night long.
 2, Bees have four wings.
 3, I like to eat scrambled eggs for breakfast.
 4, I would like to sit down.
@@ -38,7 +43,7 @@ num, phrase
 \setlength{\footskip}{20pt}
 \setlength\parindent{0pt}
 
-\newcommand{\card}[1]{
+\newcommand{\card}[2]{
   \tikz { 
 	\node[inner ysep=-.13in,inner xsep=-.14in]{\includegraphics[width=3.74in, height=2.24in]{assets/placeholder.pdf}};
 	\node[text width=2.6in, draw=none,align=center,font=\large\bf] at (0, .02in) { #1  };
