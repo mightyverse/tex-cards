@@ -3,3 +3,4 @@
 *.gz
 *.pdf
 !assets/*.pdf
+test-phrases.csv
