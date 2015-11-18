@@ -1,3 +1,5 @@
+% ten cards on an 8.5" x 11" page
+% works with Avery business card template for print-n-play version
 \documentclass{article}
 \usepackage[left=0.75in,top=0.5in,bottom=.5in]{geometry}
 \usepackage{csvsimple}
@@ -44,10 +46,10 @@ num, phrase
 \setlength\parindent{0pt}
 
 \newcommand{\card}[2]{
-  \tikz { 
+  \tikz {
 	\node[inner ysep=-.13in,inner xsep=-.14in]{\includegraphics[width=3.74in, height=2.24in]{assets/placeholder.pdf}};
 	\node[text width=2.6in, draw=none,align=center,font=\large\bf] at (0, .02in) { #1  };
-	
+
 	\node [fill=white] (code) at (1.05in,-.47in) {
 		\qrcode[hyperlink,height=0.5in] {http://www.mightyverse.com};
 	};
