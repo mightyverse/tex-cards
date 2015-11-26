@@ -1,0 +1,68 @@
+% ten cards on an 8.5" x 11" page
+% works with Avery business card template for print-n-play version
+\documentclass{article}
+\usepackage[paperwidth=3.25in,paperheight=2in,margin=0pt ]{geometry}
+\usepackage{csvsimple}
+\usepackage{tikz}
+%\usetikzlibrary{positioning,fit,calc}
+\usepackage{qrcode}
+%\usepackage{showframe}
+
+\usepackage{background}
+
+
+\newcommand{\level}{starter}
+%\newcommand{\starterpath}{assets/\level-background.pdf}
+\newcommand{\starterpath}{assets/single-\level-background.pdf}
+\let\filepath\starterpath
+
+\backgroundsetup{
+position=current page.center,
+angle=0,
+opacity=1,
+scale=1,
+contents={\includegraphics[height=\paperheight]{\starterpath}}
+}%
+
+\begin{filecontents*}{test-phrases.csv}
+num, phrase
+1, I like to drink coffee all night long.
+2, Bees have four wings.
+3, I like to eat scrambled eggs for breakfast.
+4, I would like to sit down.
+5, I like to travel.
+6, I play cards.
+7, I am hungry.
+8, This is a book.
+9, The fireworks are beautiful.
+10, I walk to work every day.
+\end{filecontents*}
+
+% don't hyphenate
+\tolerance=1
+\hyphenpenalty=10000
+\hbadness=10000
+
+\setlength{\footskip}{20pt}
+\setlength\parindent{0pt}
+
+\newcommand{\card}[2]{
+  \tikz {
+	\node[inner ysep=-.13in,inner xsep=-.14in]{\includegraphics[width=3.74in, height=2.24in]{assets/placeholder.pdf}};
+	\node[text width=2.6in, draw=none,align=center,font=\large\bf] at (0, .02in) { #1  };
+
+	\node [fill=white] (code) at (1.05in,-.47in) {
+		\qrcode[hyperlink,height=0.5in] {http://www.mightyverse.com};
+	};
+	\definecolor{starter_color}{cmyk}{.40,0,.70,0}
+	\node [ white, fill=starter_color, rounded corners=4pt, inner sep=4pt, font=\sffamily] (level) at  (-1.1in,-.7in){\tiny\uppercase {starter}};
+  }
+}
+
+\begin{document}
+
+\csvreader[
+  head to column names
+]{test-phrases.csv}{}{\card \phrase}
+
+\end{document}
