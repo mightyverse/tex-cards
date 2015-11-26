@@ -10,9 +10,10 @@
 
 \usepackage{background}
 
-
+% level can be "starter" or "levelone"
 \newcommand{\level}{starter}
-%\newcommand{\starterpath}{assets/\level-background.pdf}
+\definecolor{starter_color}{cmyk}{.40,0,.70,0}
+
 \newcommand{\starterpath}{assets/single-\level-background.pdf}
 \let\filepath\starterpath
 
@@ -54,7 +55,6 @@ num, phrase
 	\node [fill=white] (code) at (1.05in,-.47in) {
 		\qrcode[hyperlink,height=0.5in] {http://www.mightyverse.com};
 	};
-	\definecolor{starter_color}{cmyk}{.40,0,.70,0}
 	\node [ white, fill=starter_color, rounded corners=4pt, inner sep=4pt, font=\sffamily] (level) at  (-1.1in,-.7in){\tiny\uppercase {starter}};
   }
 }
