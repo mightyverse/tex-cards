@@ -1,0 +1,22 @@
+\documentclass[avery5371, grid, backs]{flashcards}
+\usepackage{tikz}
+
+\newcommand{\level}{starter}
+\newcommand{\backgroundpath}{assets/single-\level-background.pdf}
+
+\begin{document}
+\cardfrontstyle{empty}
+
+\begin{flashcard}{}
+	\begin{tikzpicture}
+		\node[inner ysep=-.13in,inner xsep=-.14in]{\includegraphics[width=3.5in, height=2in]{\backgroundpath}};
+	
+	\node [align=center,midway] {
+		replacement of\\
+		something
+	};
+	\end{tikzpicture}
+
+\end{flashcard}
+
+\end{document}
