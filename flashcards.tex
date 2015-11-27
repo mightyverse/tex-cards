@@ -9,7 +9,9 @@
 
 % level variables
 \newcommand{\level}{starter}
+\newcommand{\leveltext}{Starter}
 \newcommand{\backgroundpath}{assets/single-\level-background.pdf}
+\definecolor{spotcolor}{cmyk}{.40,0,.70,0}
 
 
 \begin{filecontents*}{test-phrases.csv}
@@ -40,6 +42,9 @@ num, phrase
 		\node [align=center,midway, text width=3.1in] {
 			\phrase
 		};
+
+		\node [anchor=south west, white, fill=spotcolor, rounded corners=3pt, inner sep=4pt, font=\sffamily] (level) at  (-1.27in,-.68in) {\tiny\MakeUppercase {\leveltext}};
+
 	\end{tikzpicture}
 
 \end{flashcard}
