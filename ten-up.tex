@@ -1,67 +1,63 @@
 % ten cards on an 8.5" x 11" page
 % works with Avery business card template for print-n-play version
-\documentclass{article}
-\usepackage[left=0.75in,top=0.5in,bottom=.5in]{geometry}
-\usepackage{csvsimple}
+\documentclass[avery5371, backs]{flashcards}
 \usepackage{tikz}
-%\usetikzlibrary{positioning,fit,calc}
+\usepackage{csvsimple}
 \usepackage{qrcode}
-%\usepackage{showframe}
-
-\usepackage{background}
-
-
-\newcommand{\level}{starter}
-\newcommand{\starterpath}{assets/\level-background.pdf}
-\let\filepath\starterpath
-
-\backgroundsetup{
-position=current page.center,
-angle=0,
-opacity=1,
-scale=1,
-contents={\includegraphics[height=\paperheight]{\starterpath}}
-}%
-
-\begin{filecontents*}{test-phrases.csv}
-num, phrase
-1, I like to drink coffee all night long.
-2, Bees have four wings.
-3, I like to eat scrambled eggs for breakfast.
-4, I would like to sit down.
-5, I like to travel.
-6, I play cards.
-7, I am hungry.
-8, This is a book.
-9, The fireworks are beautiful.
-10, I walk to work every day.
-\end{filecontents*}
+\usepackage{ifthen}
 
 % don't hyphenate
 \tolerance=1
 \hyphenpenalty=10000
 \hbadness=10000
 
-\setlength{\footskip}{20pt}
-\setlength\parindent{0pt}
+% level variables
+\newcommand{\level}{starter}
+\newcommand{\leveltext}{Starter}
+\newcommand{\backgroundpath}{assets/single-\level-background.pdf}
+\definecolor{spotcolor}{cmyk}{.40,0,.70,0}
 
-\newcommand{\card}[2]{
-  \tikz {
-	\node[inner ysep=-.13in,inner xsep=-.14in]{\includegraphics[width=3.74in, height=2.24in]{assets/placeholder.pdf}};
-	\node[text width=2.6in, draw=none,align=center,font=\large\bf] at (0, .02in) { #1  };
 
-	\node [fill=white] (code) at (1.05in,-.47in) {
-		\qrcode[hyperlink,height=0.5in] {http://www.mightyverse.com};
-	};
-	\definecolor{starter_color}{cmyk}{.40,0,.70,0}
-	\node [ white, fill=starter_color, rounded corners=4pt, inner sep=4pt, font=\sffamily] (level) at  (-1.1in,-.7in){\tiny\uppercase {starter}};
-  }
-}
+\begin{filecontents*}{test-phrases.csv}
+num, phrase, link
+1, I like to drink coffee all night long., http://www.mightyverse.com
+2, Bees have four wings., http://bit.ly/1Ndo9Z6
+3, I like to eat scrambled eggs for breakfast when I wake up in the morning.,
+4, I would like to sit down.,
+5, I like to travel.,
+6, I play cards.,
+7, I am hungry.,
+8, This is a book.,
+9, The fireworks are beautiful.,
+10, I walk to work every day.,
+\end{filecontents*}
 
 \begin{document}
+\cardfrontstyle{empty}
 
 \csvreader[
   head to column names
-]{test-phrases.csv}{}{\card \phrase}
+]{test-phrases.csv}{}{
+\begin{flashcard}{}
+	\message {\phrase}    % write phrase to the log file
+	\begin{tikzpicture}
+		\node[inner ysep=-.13in,inner xsep=-.14in]{\includegraphics[width=3.5in, height=2in]{\backgroundpath}};
+	
+		\node [align=center,midway, text width=3.1in] {
+			\phrase
+		};
+		\ifthenelse{\equal{\link}{}}{
+	        % no URL, omit QR code
+		}{
+	 	  \node [anchor=south east, fill=white] (code) at (1.27in,-.68in) {
+			\qrcode[hyperlink,height=0.4in] {\link};
+		  };
+	   }
+		\node [anchor=south west, white, fill=spotcolor, rounded corners=3pt, inner sep=4pt, font=\sffamily] (level) at  (-1.27in,-.68in) {\tiny\MakeUppercase {\leveltext}};
+
+	\end{tikzpicture}
+
+\end{flashcard}
+}
 
 \end{document}
