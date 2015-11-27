@@ -1,6 +1,8 @@
 \documentclass[avery5371, grid, backs]{flashcards}
 \usepackage{tikz}
 \usepackage{csvsimple}
+\usepackage{qrcode}
+\usepackage{ifthen}
 
 % don't hyphenate
 \tolerance=1
@@ -15,19 +17,18 @@
 
 
 \begin{filecontents*}{test-phrases.csv}
-num, phrase
-1, I like to drink coffee all night long.
-2, Bees have four wings.
-3, I like to eat scrambled eggs for breakfast when I wake up in the morning.
-4, I would like to sit down.
-5, I like to travel.
-6, I play cards.
-7, I am hungry.
-8, This is a book.
-9, The fireworks are beautiful.
-10, I walk to work every day.
+num, phrase, link
+1, I like to drink coffee all night long., http://www.mightyverse.com
+2, Bees have four wings., http://bit.ly/1Ndo9Z6
+3, I like to eat scrambled eggs for breakfast when I wake up in the morning.,
+4, I would like to sit down.,
+5, I like to travel.,
+6, I play cards.,
+7, I am hungry.,
+8, This is a book.,
+9, The fireworks are beautiful.,
+10, I walk to work every day.,
 \end{filecontents*}
-
 
 \begin{document}
 \cardfrontstyle{empty}
@@ -36,13 +37,20 @@ num, phrase
   head to column names
 ]{test-phrases.csv}{}{
 \begin{flashcard}{}
+	\message {\phrase}    % write phrase to the log file
 	\begin{tikzpicture}
 		\node[inner ysep=-.13in,inner xsep=-.14in]{\includegraphics[width=3.5in, height=2in]{\backgroundpath}};
 	
 		\node [align=center,midway, text width=3.1in] {
 			\phrase
 		};
-
+		\ifthenelse{\equal{\link}{}}{
+	        % no URL, omit QR code
+		}{
+	 	  \node [anchor=south east, fill=white] (code) at (1.27in,-.68in) {
+			\qrcode[hyperlink,height=0.4in] {\link};
+		  };
+	   }
 		\node [anchor=south west, white, fill=spotcolor, rounded corners=3pt, inner sep=4pt, font=\sffamily] (level) at  (-1.27in,-.68in) {\tiny\MakeUppercase {\leveltext}};
 
 	\end{tikzpicture}
