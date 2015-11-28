@@ -13,4 +13,4 @@ To use it with this program, it needs to be copied from the [Adobe support direc
 
 
 
-[avery1]: (http://www.avery.com/avery/en_us/Products/Cards/Business-Cards/Laser-Business-Cards_05371.htm)
+[avery1]: http://www.avery.com/avery/en_us/Products/Cards/Business-Cards/Laser-Business-Cards_05371.htm
