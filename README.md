@@ -26,3 +26,9 @@ A. Open `single.tex` and click "Typeset" button at top-right of the window,
    which generates a PDF with one card per page.
 
 B. To add your own phrases, modify `test-phrases.csv`
+
+## FAQ
+
+1. It looks wrong!  Why is the image offset in strange ways?  Sometimes LaTeX
+needs you to execute it 2-3 times to get the layout to "settle down."  Just
+try "Typeset" again a few times.
